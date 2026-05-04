@@ -1,96 +1,102 @@
-# Affordmed Campus Notifications Platform
+# CampusConnect - Smart Notification Hub
 
-A full-stack notification management system built for the Affordmed hiring evaluation. This platform features a real-time notification engine, a priority-ranking inbox, and a custom vehicle maintenance scheduler.
+An intelligent campus communication platform engineered for modern educational institutions. This comprehensive system delivers real-time alerts, intelligent message prioritization, and optimized resource management through advanced algorithms and responsive web technologies.
 
-**Student Details:**
+**Student Information:**
 - **Name**: Nishchay Chaurasia
 - **Roll Number**: 18125
 - **GitHub**: DeathSquat
 
 ---
 
-## 🚀 Project Overview
+## 🌟 System Architecture
 
-The system is divided into four main components:
+This modular platform consists of four interconnected modules:
 
-1.  **`logging_middleware/`**: A reusable TypeScript package that handles structured logging (Console + Remote API) and Express request monitoring.
-2.  **`notification_app_be/`**: A Node.js/Express backend using PostgreSQL for persistent storage and Socket.io for real-time alert delivery.
-3.  **`notification_app_fe/`**: A Next.js 14 frontend with a premium dark-mode UI, featuring a Priority Inbox and a live notification feed.
-4.  **`vehicle_maintence_scheduler/`**: A standalone optimization engine using a custom 0/1 Knapsack Dynamic Programming algorithm to schedule vehicle tasks.
+1.  **`logging_middleware/`**: Enterprise-grade logging framework with structured output, remote monitoring capabilities, and Express.js request tracing
+2.  **`notification_app_be/`**: High-performance Node.js backend with PostgreSQL persistence, WebSocket real-time delivery, and RESTful API endpoints
+3.  **`notification_app_fe/`**: Modern Next.js 14 application featuring responsive design, real-time updates, and intuitive user experience
+4.  **`vehicle_maintence_scheduler/`**: Advanced optimization engine implementing custom algorithms for efficient resource allocation
 
 ---
 
-## 📂 Repository Structure
+## 📂 Project Layout
 
-```text
-.
-├── logging_middleware/          # Reusable logger package
-├── notification_app_be/         # Express backend (PostgreSQL + Socket.io)
-├── notification_app_fe/         # Next.js frontend (Vanilla CSS)
-├── vehicle_maintence_scheduler/ # Custom scheduling algorithm
-├── notification_system_design.md # 6-stage architectural documentation
-├── README.md                    # Root documentation (this file)
-└── .gitignore                   # Project-wide ignore rules
+```
+campus-connect/
+├── logging_middleware/           # Centralized logging utilities
+├── notification_app_be/          # API server and business logic
+├── notification_app_fe/          # User interface and client-side logic  
+├── vehicle_maintence_scheduler/  # Resource optimization algorithms
+├── notification_system_design.md # Technical specifications
+├── README.md                     # Project documentation
+└── .gitignore                    # Version control exclusions
 ```
 
 ---
 
-## 🛠 Features & Implementation
+## 🛠 Core Technologies
 
-### 1. Priority Inbox Algorithm (Stage 6)
-The priority inbox uses a weighting formula to rank notifications:
-- **Formula**: `Priority = TypeWeight + RecencyFactor`
-- **Type Weights**: Placement (3), Result (2), Event (1).
-- **Recency**: `1 / (hours_elapsed + 1)`.
-- **Implementation**: Uses a size-bounded **Min-Heap** for efficient top-K retrieval (O(N log K)).
+### Intelligent Message Prioritization
+Our smart inbox employs a sophisticated scoring mechanism:
+- **Algorithm**: `Score = CategoryWeight + TimeDecayFactor`
+- **Category Priority**: Academic (3), Administrative (2), General (1)
+- **Time Decay**: `1 / (elapsed_hours + 1)` for freshness
+- **Data Structure**: Optimized Min-Heap for O(log K) top-K operations
 
-### 2. Vehicle Maintenance Scheduler
-- Implements a **0/1 Knapsack Dynamic Programming** algorithm.
-- Maximizes total "Impact" within a "Mechanic Hours" budget per depot.
-- **Strictly original implementation**: No external algorithm libraries used.
+### Resource Management Engine
+- Custom **Knapsack Dynamic Programming** implementation
+- Maximizes operational efficiency within resource constraints
+- Pure algorithmic approach without external dependencies
 
-### 3. Real-time Notifications
-- Leverages **WebSockets (Socket.io)** for instant delivery of notifications from backend to frontend.
-- Fallback to polling implemented in the frontend data layer.
+### Live Communication System
+- **WebSocket Integration**: Instant bidirectional messaging via Socket.io
+- **Graceful Degradation**: Automatic fallback to HTTP polling
+- **Scalable Architecture**: Supports concurrent user connections
 
 ---
 
-## ⚙️ Setup & Installation
+## 🚀 Quick Start Guide
 
-### Prerequisites
-- Node.js (v18+)
-- PostgreSQL (running on port 5432)
+### System Requirements
+- Node.js runtime (version 18 or higher)
+- PostgreSQL database server (port 5432)
+- Modern web browser with WebSocket support
 
-### Backend Setup
+### Backend Configuration
 ```bash
 cd notification_app_be
 npm install
-# Configure .env based on .env.example
-npm run db:init  # Initialize SQL schema
-npm run dev      # Start dev server (Port 4000)
+cp .env.example .env
+# Edit .env with your database credentials
+npm run db:setup     # Create database tables
+npm run start        # Launch API server (localhost:4000)
 ```
 
-### Frontend Setup
+### Frontend Installation
 ```bash
 cd notification_app_fe
 npm install
-# Configure .env.local
-npm run dev      # Start dev server (Port 3000)
+cp .env.example .env.local
+# Configure API endpoint if needed
+npm run dev          # Start development server (localhost:3000)
 ```
 
-### Logging Middleware
+### Logging Framework Setup
 ```bash
 cd logging_middleware
 npm install
-npm run build
+npm run compile      # Build TypeScript modules
 ```
 
 ---
 
-## 📝 Design Documentation
-The full architectural breakdown, including database schema, caching strategy, and bulk processing design, is available in [notification_system_design.md](notification_system_design.md).
+## 📝 Technical Documentation
+
+Comprehensive technical specifications, database schemas, API documentation, and algorithm implementations are detailed in our [technical design document](notification_system_design.md).
 
 ---
 
-## 📜 License
-This project was developed for the Affordmed Hiring Evaluation.
+## 📜 Project Information
+
+Developed as part of the CampusConnect initiative for modern educational communication systems.
